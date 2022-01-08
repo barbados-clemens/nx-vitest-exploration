@@ -14,7 +14,38 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@large-ts-workspace/vite/v-lib-eight": [
+        "packages/vite/v-lib-eight/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-five": [
+        "packages/vite/v-lib-five/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-four": [
+        "packages/vite/v-lib-four/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-nine": [
+        "packages/vite/v-lib-nine/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-one": [
+        "packages/vite/v-lib-one/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-seven": [
+        "packages/vite/v-lib-seven/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-six": [
+        "packages/vite/v-lib-six/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-ten": [
+        "packages/vite/v-lib-ten/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-three": [
+        "packages/vite/v-lib-three/src/index.ts"
+      ],
+      "@large-ts-workspace/vite/v-lib-two": [
+        "packages/vite/v-lib-two/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

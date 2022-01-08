@@ -1,4 +1,15 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "vite-v-lib-eight": "packages/vite/v-lib-eight",
+    "vite-v-lib-five": "packages/vite/v-lib-five",
+    "vite-v-lib-four": "packages/vite/v-lib-four",
+    "vite-v-lib-nine": "packages/vite/v-lib-nine",
+    "vite-v-lib-one": "packages/vite/v-lib-one",
+    "vite-v-lib-seven": "packages/vite/v-lib-seven",
+    "vite-v-lib-six": "packages/vite/v-lib-six",
+    "vite-v-lib-ten": "packages/vite/v-lib-ten",
+    "vite-v-lib-three": "packages/vite/v-lib-three",
+    "vite-v-lib-two": "packages/vite/v-lib-two"
+  }
 }

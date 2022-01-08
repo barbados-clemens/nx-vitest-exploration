@@ -1,0 +1,9 @@
+{
+  "name": "@large-ts-workspace/v-lib-five",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "scripts": {
+    "build": "echo 'implement build'",
+    "test": "vitest run"
+  }
+}

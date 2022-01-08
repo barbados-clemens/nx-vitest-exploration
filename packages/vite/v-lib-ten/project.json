@@ -1,0 +1,4 @@
+{
+  "root": "packages/vite/v-lib-ten",
+  "tags": ["vitest"]
+}
