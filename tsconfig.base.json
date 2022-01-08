@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@large-ts-workspace/vite/v-lib-eight": [
-        "packages/vite/v-lib-eight/src/index.ts"
-      ],
       "@large-ts-workspace/vite/v-lib-five": [
         "packages/vite/v-lib-five/src/index.ts"
       ],
@@ -44,7 +41,8 @@
       ],
       "@large-ts-workspace/vite/v-lib-two": [
         "packages/vite/v-lib-two/src/index.ts"
-      ]
+      ],
+      "@vitest-poc/xstate-lib": ["packages/vite/xstate-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

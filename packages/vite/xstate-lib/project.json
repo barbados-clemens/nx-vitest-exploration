@@ -1,0 +1,4 @@
+{
+  "root": "packages/vite/xstate-lib",
+  "tags": ["vitest"]
+}
