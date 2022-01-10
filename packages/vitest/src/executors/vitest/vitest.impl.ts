@@ -1,6 +1,7 @@
 import {ExecutorContext} from "@nrwl/devkit";
 import {execSync} from "child_process";
 import {resolve as resolvePath} from "path";
+import {createVitest} from "vitest/node";
 import {VitestExecutorOptions} from "./schema";
 
 process.env.NODE_ENV ??= 'test';
@@ -10,9 +11,8 @@ export async function vitestExecutor(options: VitestExecutorOptions, context: Ex
   const {projectName} = context;
   const projectRoot = resolvePath(context.workspace.projects[projectName].root)
   const config = resolvePath(context.root, options.vitestConfig);
-  // console.log(JSON.stringify({cwd, projectName}, null, 2));
-  // const vitestConfig = require(resolvePath(cwd, 'vitest.config.ts'));
-  // const ctx = await createVitest(vitestConfig);
+
+  const ctx = await createVitest(context);
   // try {
   //   await ctx.start()
   // } catch (e) {

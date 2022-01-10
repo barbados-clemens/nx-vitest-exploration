@@ -7,6 +7,11 @@
       "factory": "./src/generators/vitest/generator",
       "schema": "./src/generators/vitest/schema.json",
       "description": "vitest generator"
+    },
+    "add": {
+      "factory": "./src/generators/add-vitest/add-vitest",
+      "schema": "./src/generators/add-vitest/schema.json",
+      "description": "Add Vitest to your project"
     }
   }
 }

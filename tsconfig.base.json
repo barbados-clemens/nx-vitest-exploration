@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@large-ts-workspace/blah-test": ["packages/blah-test/src/index.ts"],
       "@large-ts-workspace/vite/v-lib-five": [
         "packages/vite/v-lib-five/src/index.ts"
       ],

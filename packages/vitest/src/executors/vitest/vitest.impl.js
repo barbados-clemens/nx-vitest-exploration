@@ -41,17 +41,24 @@ exports.__esModule = true;
 exports.vitestExecutor = void 0;
 var child_process_1 = require("child_process");
 var path_1 = require("path");
+var node_1 = require("vitest/node");
 (_a = (_b = process.env).NODE_ENV) !== null && _a !== void 0 ? _a : (_b.NODE_ENV = 'test');
 function vitestExecutor(options, context) {
     return __awaiter(this, void 0, void 0, function () {
-        var projectName, projectRoot, config, cmd;
+        var projectName, projectRoot, config, ctx, cmd;
         return __generator(this, function (_a) {
-            projectName = context.projectName;
-            projectRoot = (0, path_1.resolve)(context.workspace.projects[projectName].root);
-            config = (0, path_1.resolve)(context.root, options.vitestConfig);
-            cmd = "npx vitest " + (options.watch ? 'watch' : 'run') + " --config " + config + " " + (options.passWithNoTests ? '--passWithNoTests' : '') + " " + (options.coverage ? '--coverage' : '') + " " + (options.ui ? '--ui' : '');
-            (0, child_process_1.execSync)(cmd.trim(), { cwd: projectRoot, stdio: 'inherit' });
-            return [2 /*return*/, { success: true }];
+            switch (_a.label) {
+                case 0:
+                    projectName = context.projectName;
+                    projectRoot = (0, path_1.resolve)(context.workspace.projects[projectName].root);
+                    config = (0, path_1.resolve)(context.root, options.vitestConfig);
+                    return [4 /*yield*/, (0, node_1.createVitest)(context)];
+                case 1:
+                    ctx = _a.sent();
+                    cmd = "npx vitest " + (options.watch ? 'watch' : 'run') + " --config " + config + " " + (options.passWithNoTests ? '--passWithNoTests' : '') + " " + (options.coverage ? '--coverage' : '') + " " + (options.ui ? '--ui' : '');
+                    (0, child_process_1.execSync)(cmd.trim(), { cwd: projectRoot, stdio: 'inherit' });
+                    return [2 /*return*/, { success: true }];
+            }
         });
     });
 }

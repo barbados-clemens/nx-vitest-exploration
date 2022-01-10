@@ -1,11 +1,14 @@
 import {
+  addDependenciesToPackageJson,
   generateFiles,
+  installPackagesTask,
   joinPathFragments,
   ProjectConfiguration,
   readProjectConfiguration,
   Tree,
   updateProjectConfiguration
 } from "@nrwl/devkit";
+import {vitestUiVersion, vitestVersion, viteVersion} from "../../utils/versions";
 import {AddVitestSchema} from "./schema";
 
 export async function addVitestGenerator(tree: Tree, options: AddVitestSchema) {
@@ -14,19 +17,34 @@ export async function addVitestGenerator(tree: Tree, options: AddVitestSchema) {
 
   updateTestTarget(tree, projectConfiguration, options.projectName);
 
-  // remove jest files
+  // TODO(caleb) if convert then remove jest files
 
-  // install vitest and vite deps
+  addDependenciesToPackageJson(tree, {}, {vite: viteVersion, vitest: vitestVersion, '@vitest/ui': vitestUiVersion})
+  return installPackagesTask(tree);
 }
 
 function updateTestTarget(tree: Tree, projectConfiguration: ProjectConfiguration,
                           projectName: string,
-                          projectTargets: string[] = ["test"]
+                          projectTargets: string[] = ["test", "vitest"]
 ) {
   for (const target of projectTargets) {
     const targetConfiguration = projectConfiguration.targets[target];
-    if (!targetConfiguration || targetConfiguration.executor !== '@nrwl/jest:test')
+
+    if (!targetConfiguration) {
+      projectConfiguration.targets[target] = {
+        executor: "./packages/vitest:test",
+        options: {
+          vitestConfig: `${projectConfiguration.root}/vitest.config.ts`,
+          passWithNoTests: true
+        }
+      }
+    }
+
+
+    if (targetConfiguration.executor !== '@nrwl/jest:test')
       continue;
+
+
     targetConfiguration.executor = './packages/vitest:test' // TODO(caleb): @nrwl/vitest:test
 
     targetConfiguration.options = {
@@ -37,3 +55,6 @@ function updateTestTarget(tree: Tree, projectConfiguration: ProjectConfiguration
 
   updateProjectConfiguration(tree, projectName, projectConfiguration);
 }
+
+
+export default addVitestGenerator;

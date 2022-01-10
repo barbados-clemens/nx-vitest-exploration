@@ -1,0 +1,15 @@
+{
+  "root": "packages/blah-test",
+  "sourceRoot": "packages/blah-test/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/blah-test/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
