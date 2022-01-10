@@ -25,19 +25,20 @@ export async function addVitestGenerator(tree: Tree, options: AddVitestSchema) {
 
 function updateTestTarget(tree: Tree, projectConfiguration: ProjectConfiguration,
                           projectName: string,
-                          projectTargets: string[] = ["test", "vitest"]
+                          projectTargets: string[] = ["test"]
 ) {
   for (const target of projectTargets) {
     const targetConfiguration = projectConfiguration.targets[target];
-
+    console.log(JSON.stringify({targetConfiguration}, null, 2));
     if (!targetConfiguration) {
       projectConfiguration.targets[target] = {
         executor: "./packages/vitest:test",
         options: {
-          vitestConfig: `${projectConfiguration.root}/vitest.config.ts`,
+          vitestConfig: `./${projectConfiguration.root}/vitest.config.ts`,
           passWithNoTests: true
         }
       }
+      continue;
     }
 
 
@@ -48,7 +49,7 @@ function updateTestTarget(tree: Tree, projectConfiguration: ProjectConfiguration
     targetConfiguration.executor = './packages/vitest:test' // TODO(caleb): @nrwl/vitest:test
 
     targetConfiguration.options = {
-      vitestConfig: `${projectConfiguration.root}/vitest.config.ts`,
+      vitestConfig: `./${projectConfiguration.root}/vitest.config.ts`,
       passWithNoTests: true
     }
   }

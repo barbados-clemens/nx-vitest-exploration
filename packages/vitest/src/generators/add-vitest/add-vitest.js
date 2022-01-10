@@ -35,25 +35,48 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _a;
-var _b;
 exports.__esModule = true;
-exports.vitestExecutor = void 0;
-var child_process_1 = require("child_process");
-var path_1 = require("path");
-(_a = (_b = process.env).NODE_ENV) !== null && _a !== void 0 ? _a : (_b.NODE_ENV = 'test');
-function vitestExecutor(options, context) {
+exports.addVitestGenerator = void 0;
+var devkit_1 = require("@nrwl/devkit");
+var versions_1 = require("../../utils/versions");
+function addVitestGenerator(tree, options) {
     return __awaiter(this, void 0, void 0, function () {
-        var projectName, projectRoot, config, cmd;
+        var projectConfiguration;
         return __generator(this, function (_a) {
-            projectName = context.projectName;
-            projectRoot = (0, path_1.resolve)(context.workspace.projects[projectName].root);
-            config = (0, path_1.resolve)(context.root, options.vitestConfig);
-            cmd = "npx vitest " + (options.watch ? 'watch' : 'run') + " --config " + config + " " + (options.passWithNoTests ? '--passWithNoTests' : '') + " " + (options.coverage ? '--coverage' : '') + " " + (options.ui ? '--ui' : '');
-            (0, child_process_1.execSync)(cmd.trim(), { cwd: projectRoot, stdio: 'inherit' });
-            return [2 /*return*/, { success: true }];
+            projectConfiguration = (0, devkit_1.readProjectConfiguration)(tree, options.projectName);
+            (0, devkit_1.generateFiles)(tree, (0, devkit_1.joinPathFragments)(__dirname, 'files'), projectConfiguration.root, options);
+            updateTestTarget(tree, projectConfiguration, options.projectName);
+            // TODO(caleb) if convert then remove jest files
+            (0, devkit_1.addDependenciesToPackageJson)(tree, {}, { vite: versions_1.viteVersion, vitest: versions_1.vitestVersion, '@vitest/ui': versions_1.vitestUiVersion });
+            return [2 /*return*/, (0, devkit_1.installPackagesTask)(tree)];
         });
     });
 }
-exports.vitestExecutor = vitestExecutor;
-exports["default"] = vitestExecutor;
+exports.addVitestGenerator = addVitestGenerator;
+function updateTestTarget(tree, projectConfiguration, projectName, projectTargets) {
+    if (projectTargets === void 0) { projectTargets = ["test"]; }
+    for (var _i = 0, projectTargets_1 = projectTargets; _i < projectTargets_1.length; _i++) {
+        var target = projectTargets_1[_i];
+        var targetConfiguration = projectConfiguration.targets[target];
+        console.log(JSON.stringify({ targetConfiguration: targetConfiguration }, null, 2));
+        if (!targetConfiguration) {
+            projectConfiguration.targets[target] = {
+                executor: "./packages/vitest:test",
+                options: {
+                    vitestConfig: "./" + projectConfiguration.root + "/vitest.config.ts",
+                    passWithNoTests: true
+                }
+            };
+            continue;
+        }
+        if (targetConfiguration.executor !== '@nrwl/jest:test')
+            continue;
+        targetConfiguration.executor = './packages/vitest:test'; // TODO(caleb): @nrwl/vitest:test
+        targetConfiguration.options = {
+            vitestConfig: "./" + projectConfiguration.root + "/vitest.config.ts",
+            passWithNoTests: true
+        };
+    }
+    (0, devkit_1.updateProjectConfiguration)(tree, projectName, projectConfiguration);
+}
+exports["default"] = addVitestGenerator;
