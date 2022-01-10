@@ -10,6 +10,8 @@
     "vite-v-lib-ten": "packages/vite/v-lib-ten",
     "vite-v-lib-three": "packages/vite/v-lib-three",
     "vite-v-lib-two": "packages/vite/v-lib-two",
-    "vite-xstate-lib": "packages/vite/xstate-lib"
+    "vite-xstate-lib": "packages/vite/xstate-lib",
+    "vitest": "packages/vitest",
+    "vitest-e2e": "packages/vitest-e2e"
   }
 }

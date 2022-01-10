@@ -1,0 +1,16 @@
+{
+  "root": "packages/vitest-e2e",
+  "projectType": "application",
+  "sourceRoot": "packages/vitest-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/nx-plugin:e2e",
+      "options": {
+        "target": "vitest:build",
+        "jestConfig": "packages/vitest-e2e/jest.config.js"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["vitest"]
+}

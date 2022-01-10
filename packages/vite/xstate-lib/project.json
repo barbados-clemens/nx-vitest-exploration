@@ -1,4 +1,15 @@
 {
   "root": "packages/vite/xstate-lib",
-  "tags": ["vitest"]
+  "tags": [
+    "vitest"
+  ],
+  "targets": {
+    "vitest": {
+      "executor": "./packages/vitest:test",
+      "options": {
+        "vitestConfig": "./packages/vite/xstate-lib/vitest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
 }

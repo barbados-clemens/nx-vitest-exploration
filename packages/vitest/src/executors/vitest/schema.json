@@ -1,0 +1,30 @@
+{
+  "title": "Vitest Executor",
+  "description": "Vitest target options for executors",
+  "cli": "nx",
+  "type": "object",
+  "properties": {
+    "vitestConfig": {
+      "description": "The path of the Vitest configuration. (https://vitest.dev/config/#configuration)",
+      "type": "string"
+    },
+    "codeCoverage": {
+      "description": "Indicates that test coverage information should be collected and reported in the output. (https://vitest.dev/guide/#cli-options)",
+      "type": "boolean",
+      "aliases": [
+        "coverage"
+      ]
+    },
+    "ui": {
+      "description": "Indicates that the UI should be opened in the browser. (https://vitest.dev/guide/#cli-options)",
+      "type": "boolean"
+    },
+    "passWithNoTests": {
+      "description": "Will not fail if no tests are found (for example while using `--testPathPattern`.) (https://jestjs.io/docs/cli#--passwithnotests)",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "vitestConfig"
+  ]
+}

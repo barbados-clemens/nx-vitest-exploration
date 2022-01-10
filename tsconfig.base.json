@@ -42,6 +42,7 @@
       "@large-ts-workspace/vite/v-lib-two": [
         "packages/vite/v-lib-two/src/index.ts"
       ],
+      "@large-ts-workspace/vitest": ["packages/vitest/src/index.ts"],
       "@vitest-poc/xstate-lib": ["packages/vite/xstate-lib/src/index.ts"]
     }
   },

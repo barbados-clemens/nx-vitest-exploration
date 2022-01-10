@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "vitest",
+  "version": "0.0.1",
+  "generators": {
+    "vitest": {
+      "factory": "./src/generators/vitest/generator",
+      "schema": "./src/generators/vitest/schema.json",
+      "description": "vitest generator"
+    }
+  }
+}
