@@ -4,7 +4,7 @@
     "vitest"
   ],
   "targets": {
-    "vitest": {
+    "test": {
       "executor": "./packages/vitest:test",
       "options": {
         "vitestConfig": "./packages/vite/xstate-lib/vitest.config.ts",

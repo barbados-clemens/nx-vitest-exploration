@@ -4,6 +4,6 @@
   "type": "commonjs",
   "scripts": {
     "build": "echo 'implement build'",
-    "test": "vitest run"
+    "test-old": "vitest run"
   }
 }
