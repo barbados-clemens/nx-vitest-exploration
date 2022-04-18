@@ -11,9 +11,7 @@
     "codeCoverage": {
       "description": "Indicates that test coverage information should be collected and reported in the output. (https://vitest.dev/guide/#cli-options)",
       "type": "boolean",
-      "aliases": [
-        "coverage"
-      ]
+      "aliases": ["coverage"]
     },
     "ui": {
       "description": "Indicates that the UI should be opened in the browser. (https://vitest.dev/guide/#cli-options)",
@@ -24,7 +22,5 @@
       "type": "boolean"
     }
   },
-  "required": [
-    "vitestConfig"
-  ]
+  "required": ["vitestConfig"]
 }
