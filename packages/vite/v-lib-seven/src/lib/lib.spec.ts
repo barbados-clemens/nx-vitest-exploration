@@ -1,4 +1,4 @@
-import {viteVLibSeven} from "./vite-v-lib-seven";
+import { viteVLibSeven } from './vite-v-lib-seven';
 
 describe('lib-one', () => {
   it('should work', () => {

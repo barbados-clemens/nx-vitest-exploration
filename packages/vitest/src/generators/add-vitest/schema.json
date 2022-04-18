@@ -7,16 +7,12 @@
     "projectName": {
       "type": "string",
       "description": "The name of the project to add vitest to",
-      "aliases": [
-        "project"
-      ]
+      "aliases": ["project"]
     },
     "convert": {
       "type": "boolean",
       "description": "Convert the project to use Vitest if it's already using jest"
     }
   },
-  "required": [
-    "projectName"
-  ]
+  "required": ["projectName"]
 }

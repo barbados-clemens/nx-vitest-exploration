@@ -1,4 +1,4 @@
-import { fn } from 'vitest';
+import { vi } from 'vitest';
 import {
   rejectionFetchMachine,
   resolvingFetchMachine,
@@ -13,14 +13,14 @@ describe('lib-eight', () => {
   });
 
   it('should resolve with cb', () => {
-    const mockCb = fn();
+    const mockCb = vi.fn();
     resolvingFetchMachine(mockCb);
 
     expect(mockCb).toHaveBeenCalledTimes(3);
   });
 
   it('should resolve with cb', () => {
-    const mockCb = fn();
+    const mockCb = vi.fn();
     rejectionFetchMachine(mockCb);
 
     expect(mockCb).toHaveBeenCalledTimes(6);

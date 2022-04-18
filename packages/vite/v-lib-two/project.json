@@ -1,6 +1,4 @@
 {
   "root": "packages/vite/v-lib-two",
-  "tags": [
-    "vitest"
-  ]
+  "tags": ["vitest"]
 }

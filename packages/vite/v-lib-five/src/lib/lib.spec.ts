@@ -1,5 +1,4 @@
-import {viteVLibFive} from "./vite-v-lib-five";
-
+import { viteVLibFive } from './vite-v-lib-five';
 
 describe('lib-five', () => {
   it('should work', () => {
